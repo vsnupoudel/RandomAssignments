@@ -9,7 +9,7 @@ def combination_of_sums(N, X, Y):
     """
     listof = list( range(X,Y+1) )
     co = itertools.combinations_with_replacement(listof, N)
-    sums = [np.sum(tup) for tup in co]
+    sums = set( [np.sum(tup) for tup in co])
     #print(sums)
     return len(sums)
 
