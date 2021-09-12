@@ -1,0 +1,35 @@
+import numpy as np
+
+def number_of_jars(A, C, K):
+    """ A: Numbers of a number line
+        C: Maximum items in a jar
+        K: Maximum difference of numbers in a jar ( max range)
+    Return:
+        Number of Jars
+    """
+    jars = []
+    for j in A:
+        if A:
+            jar = []
+            for num in A:
+                jar.append(num)
+            while np.max(jar) - np.min(jar) > K:
+                jar.remove(np.max(jar))
+            while len(jar)>C:
+                jar.remove(np.max(jar))
+                
+            B = [a for a in A if a not in jar]
+            A = B
+            jars.append(jar)
+        else:
+            break
+        
+    print(jars)
+    return len(jars)
+        
+
+A = [1, 2, 3, 5, 9, 12]
+C = 3
+K = 3
+print( number_of_jars(A, C, K) )
+    
